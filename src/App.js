@@ -1,5 +1,6 @@
 import './App.css';
 import DogList from "./DogList";
+import Dog from "./Dog";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import whiskey from "./imgs/whiskey.jpg"
 import duke from "./imgs/duke.jpg"
@@ -58,8 +59,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/dogs">
           <DogList dogs={App.defaultProps.dogs}/>
+        </Route>
+        <Route path="/dogs/:name">
+          <Dog/>
         </Route>
       </Switch>
       </BrowserRouter>
