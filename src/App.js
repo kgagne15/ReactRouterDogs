@@ -1,7 +1,8 @@
 import './App.css';
 import DogList from "./DogList";
 import Dog from "./Dog";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import NavBar from "./NavBar";
+import {Switch, Route, BrowserRouter, Redirect} from "react-router-dom";
 import whiskey from "./imgs/whiskey.jpg"
 import duke from "./imgs/duke.jpg"
 import perry from "./imgs/perry.jpg"
@@ -58,13 +59,15 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <NavBar dogs={App.defaultProps.dogs}/>
       <Switch>
         <Route exact path="/dogs">
           <DogList dogs={App.defaultProps.dogs}/>
         </Route>
         <Route path="/dogs/:name">
-          <Dog/>
+          <Dog dogs={App.defaultProps.dogs}/>
         </Route>
+        <Redirect to="/dogs" />
       </Switch>
       </BrowserRouter>
     </div>
